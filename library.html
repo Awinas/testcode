@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#fff4f8"><meta name="description" content="A cute birthday garden made with tulips, cats, books, and love."><title>The Cozy Corner | For Ishami ♡</title><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="icon" href="favicon.ico" sizes="any"><link rel="apple-touch-icon" href="apple-touch-icon.png"><script src="lock.js"></script><link rel="stylesheet" href="style.css"></head><body>
+<div class="topbar"><nav class="nav"><a class="brand" href="index.html"><span>♡</span> for Ishami</a><div class="navlinks"><a class="" href="index.html">Home</a><a class="" href="letter.html">Love Letter</a><a class="" href="garden.html">Tulip Garden</a><a class="" href="cats.html">Cat Café</a><a class="active" href="library.html">Next Read</a><a href="adventure.html">Trail Notes</a><a href="messages.html">Private Note</a><a class="" href="wishes.html">Wish Jar</a><a href="library.html">Next Read</a><a href="adventure.html">Trail Notes</a><a href="messages.html">Private Note</a><button class="music-btn" id="musicBtn" aria-pressed="false">♫ Play music</button></div></nav></div>
+
+<main class="section wrap">
+<div class="section-head"><div class="kicker">the next chapter · a little bookish ritual</div><h2>What will you read next? 📚</h2><p class="muted">Not a generic reading list. A tiny shelf for the story that is about to find you.</p></div>
+<div class="panel next-read-panel">
+  <div class="book-hero"><div class="book-stack" aria-hidden="true"><span>📕</span><span>📗</span><span>📘</span></div><div><div class="kicker">reserved for your next adventure</div><h2 id="nextReadTitle">Your next chapter is waiting.</h2><p class="muted" id="nextReadAuthor">Every book begins with one curious page.</p></div></div>
+  <div class="divider"></div>
+  <form id="nextReadForm" class="next-read-form">
+    <label for="bookTitle">Book title</label><input id="bookTitle" name="bookTitle" placeholder="The book you want to read next" required>
+    <label for="bookAuthor">Author (if you know it)</label><input id="bookAuthor" name="bookAuthor" placeholder="Author's name">
+    <label for="bookReason">Why this one?</label><textarea id="bookReason" name="bookReason" rows="3" placeholder="The cover, the plot, a recommendation, or just a feeling..."></textarea>
+    <div class="actions"><button class="btn" type="submit">Save to my next-read shelf ♡</button><button class="btn secondary" type="button" id="clearRead">Clear shelf</button></div>
+  </form>
+  <p class="tiny" id="readSaved" aria-live="polite">Your choice stays in this browser on this device. ♡</p>
+</div>
+<section class="section"><div class="grid">
+<article class="card"><span class="big">🌙</span><h3>Nightstand pick</h3><p>Choose a book that makes you want to read just one more page, even when it is late.</p></article>
+<article class="card"><span class="big">🍃</span><h3>Outside chapter</h3><p>Bring a book somewhere quiet. A park bench, a window seat, or a shady spot after a walk.</p></article>
+<article class="card"><span class="big">📝</span><h3>Keep one sentence</h3><p>Write down one line that stays with you. No review required, just a small souvenir from the story.</p></article>
+</div></section>
+<div class="actions"><a class="btn" href="adventure.html">Plan a little hike 🥾</a><a class="btn secondary" href="messages.html">Leave a private note 💌</a></div>
+</main>
+<script>
+(function(){
+ const form=document.getElementById('nextReadForm'), title=document.getElementById('bookTitle'), author=document.getElementById('bookAuthor'), reason=document.getElementById('bookReason');
+ const outTitle=document.getElementById('nextReadTitle'), outAuthor=document.getElementById('nextReadAuthor'), saved=document.getElementById('readSaved');
+ function render(data){outTitle.textContent=data.title||'Your next chapter is waiting.';outAuthor.textContent=data.author?(data.author+(data.reason?' · '+data.reason:'')):(data.reason||'Every book begins with one curious page.');}
+ try{const data=JSON.parse(localStorage.getItem('ishamiNextRead')||'null');if(data){title.value=data.title||'';author.value=data.author||'';reason.value=data.reason||'';render(data);saved.textContent='Your next-read shelf is saved on this device. ♡';}}catch(e){}
+ form.addEventListener('submit',function(e){e.preventDefault();const data={title:title.value.trim(),author:author.value.trim(),reason:reason.value.trim()};try{localStorage.setItem('ishamiNextRead',JSON.stringify(data));saved.textContent='Saved. Your next chapter is waiting on this device. 📚';}catch(e){saved.textContent='Could not save in this browser. You can still see your selection until you leave this page.';}render(data);});
+ document.getElementById('clearRead').addEventListener('click',function(){form.reset();try{localStorage.removeItem('ishamiNextRead');}catch(e){}render({});saved.textContent='Shelf cleared.';});
+})();
+</script>
+<footer class="footer">made with ♡, tulips, cats & bookish dreams · just for Ishami</footer>
+<script src="script.js"></script></body></html>
