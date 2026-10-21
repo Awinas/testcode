@@ -1,7 +1,7 @@
 /* Birthday lock — keeps every page sealed until the birthday arrives.
    Change BDAY_ISO to move the date. Time is Malaysia (UTC+8). */
 (function () {
-  var BDAY_ISO = '2026-10-23T00:00:00+08:00';
+  var BDAY_ISO = '2026-10-22T00:35:00+08:00';
   var TARGET = new Date(BDAY_ISO).getTime();
 
   /* ---- TEST MODE (only works on your own computer, never on the live site) ----
