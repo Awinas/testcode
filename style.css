@@ -88,3 +88,18 @@ h1{background:linear-gradient(120deg,#c9457f,#a56ad8);-webkit-background-clip:te
 .private-note-panel{max-width:780px}.private-note-icon{text-align:center;font-size:3rem;margin-bottom:15px}.privacy-note{line-height:1.7;margin-top:25px;padding:14px 16px;border-radius:14px;background:#fff7ed;border:1px solid #f2dfca;color:#8a6d5d}.sealed-note{margin-top:24px;border:1px dashed #d85d91;border-radius:18px;padding:20px;background:#fff8fc}.sealed-note p{white-space:pre-wrap;line-height:1.9;margin-bottom:0}
 .trail-choice{width:100%;text-align:left;color:inherit;border:1px solid var(--line);font:inherit;cursor:pointer}.trail-choice.chosen{border-color:var(--rose);background:#fff3f8;box-shadow:0 0 0 3px #d85d9118}.trail-output{margin-top:18px;text-align:center;line-height:1.8}.trail-moods{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:700px){.book-hero{align-items:flex-start;gap:12px;flex-direction:column}.book-stack{font-size:2.4rem}.trail-moods{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}.navlinks{justify-content:flex-start}.navlinks a{padding:8px 10px}}
+
+
+/* Final polish: stable navigation, readable tap targets, and gentler transitions */
+html { scroll-padding-top: 88px; }
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+img { max-width: 100%; }
+.navlinks a { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; }
+.navlinks { min-width: 0; }
+@media (max-width: 760px) {
+  .nav { gap: 8px; }
+  .navlinks { overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+  .navlinks a { min-height: 40px; }
+  .wrap { width: min(1050px, calc(100% - 28px)); }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
